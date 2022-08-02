@@ -1,5 +1,7 @@
 package com.example.dev.springbootdev.model;
 
+import java.time.LocalDate;
+
 public class Course {
 
     private long id;
@@ -34,14 +36,5 @@ public class Course {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    @Override
-    public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                '}';
     }
 }

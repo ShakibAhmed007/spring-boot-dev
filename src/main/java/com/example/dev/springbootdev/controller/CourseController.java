@@ -1,8 +1,9 @@
 package com.example.dev.springbootdev.controller;
 
 import com.example.dev.springbootdev.model.Course;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.dev.springbootdev.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,12 +11,17 @@ import java.util.List;
 @RestController
 public class CourseController {
 
-    @GetMapping("/getAllCourses")
+    @Autowired
+    private CourseService courseService;
+
+    @GetMapping("course/getAll")
     public List<Course> getData() {
-        return Arrays.asList(
-                new Course(1, "Test -- 1", "Shakib"),
-                new Course(2, "Test -- 2", "Shakib"),
-                new Course(3, "Test -- 2", "Shakib")
-        );
+        return courseService.getAllCourse();
+    }
+
+    @PostMapping("course/save")
+    public String addCourse(@RequestBody Course c) {
+        courseService.addCourse(c);
+        return "Successfully Added";
     }
 }
