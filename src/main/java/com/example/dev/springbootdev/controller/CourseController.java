@@ -5,6 +5,7 @@ import com.example.dev.springbootdev.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class CourseController {
     }
 
     @PostMapping("course/save")
-    public String addCourse(@RequestBody Course c) {
+    public String addCourse(@Valid @RequestBody Course c) {
         courseService.addCourse(c);
         return "Successfully Added";
     }

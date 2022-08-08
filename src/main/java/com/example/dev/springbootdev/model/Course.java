@@ -1,11 +1,16 @@
 package com.example.dev.springbootdev.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class Course {
 
     private long id;
+    @NotNull
     private String name;
+    @NotNull
+    @Size(min = 5, message = "Minimum character should be at least 5")
     private String author;
 
     public Course(long id, String name, String author) {
