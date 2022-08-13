@@ -3,6 +3,10 @@ package com.example.dev.springbootdev.service;
 import com.example.dev.springbootdev.model.Accounts;
 import com.example.dev.springbootdev.repository.AccountsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +28,14 @@ public class AccountsService {
 
     public List<Accounts> getAll(){
         return (List<Accounts>) accountsRepository.findAll();
+    }
+
+    public Page<Accounts> getAllByPagination(Integer pageNumber, Integer pageSize, String sortBy, Boolean isAscending){
+        Sort sort = Sort.by(sortBy).descending();
+        if(isAscending)
+            sort = Sort.by(sortBy).ascending();
+        Pageable pageable = PageRequest.of(pageNumber,pageSize, sort);
+        return accountsRepository.findAll(pageable);
     }
 
     public Optional<Accounts> getById(Long id){
