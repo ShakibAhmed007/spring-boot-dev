@@ -29,6 +29,10 @@ public class Accounts {
     @NotNull
     private Integer userAge;
 
+    @Column(name = "user_role")
+    @NotNull
+    private String userRole;
+
     @Column(name = "created_on")
     @NotNull
     private LocalDateTime createdOn;
@@ -44,12 +48,13 @@ public class Accounts {
 
     }
 
-    public Accounts(Long id, String userName, String password, String userEmail, Integer userAge, LocalDateTime createdOn, LocalDateTime updatedOn, LocalDateTime lastLogin) {
+    public Accounts(Long id, String userName, String password, String userEmail, Integer userAge, String userRole, LocalDateTime createdOn, LocalDateTime updatedOn, LocalDateTime lastLogin) {
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.userEmail = userEmail;
         this.userAge = userAge;
+        this.userRole = userRole;
         this.createdOn = createdOn;
         this.updatedOn = updatedOn;
         this.lastLogin = lastLogin;
@@ -95,6 +100,14 @@ public class Accounts {
         this.userAge = userAge;
     }
 
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
     public LocalDateTime getCreatedOn() {
         return createdOn;
     }
@@ -127,6 +140,7 @@ public class Accounts {
                 ", password='" + password + '\'' +
                 ", userEmail='" + userEmail + '\'' +
                 ", userAge=" + userAge +
+                ", userRole='" + userRole + '\'' +
                 ", createdOn=" + createdOn +
                 ", updatedOn=" + updatedOn +
                 ", lastLogin=" + lastLogin +

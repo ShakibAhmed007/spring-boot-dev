@@ -40,6 +40,16 @@ public class AccountsController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/getAllByEmail")
+    public List<Accounts> getAllByEmail(@RequestParam String email) {
+        return accountsService.getAllByEmail(email);
+    }
+
+    @GetMapping("/getAllByRole")
+    public List<Accounts> getAllByRole(@RequestParam String role) {
+        return accountsService.getAllByRole(role);
+    }
+
     @GetMapping("/getById/{id}")
     public Optional<Accounts> getById(@PathVariable Long id) {
         return accountsService.getById(id);

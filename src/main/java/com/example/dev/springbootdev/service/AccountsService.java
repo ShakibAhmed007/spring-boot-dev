@@ -30,6 +30,14 @@ public class AccountsService {
         return (List<Accounts>) accountsRepository.findAll();
     }
 
+    public List<Accounts> getAllByEmail(String email){
+        return accountsRepository.findByUserEmail(email);
+    }
+
+    public List<Accounts> getAllByRole(String role){
+        return accountsRepository.findByUserRole(role);
+    }
+
     public Page<Accounts> getAllByPagination(Integer pageNumber, Integer pageSize, String sortBy, Boolean isAscending){
         Sort sort = Sort.by(sortBy).descending();
         if(isAscending)
